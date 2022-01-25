@@ -7,6 +7,9 @@ from fpdf import FPDF
 app = Flask(__name__)
 CORS(app)
 
+@app.route('/hello')
+def hello():
+    return 'hello, world!!'
 @app.route('/pdf/order', methods=['POST'])
 def order():    
     param = json.loads(request.get_data(), encoding='utf-8')
