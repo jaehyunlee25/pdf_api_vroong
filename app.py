@@ -10,6 +10,19 @@ CORS(app)
 @app.route('/hello')
 def hello():
     return 'hello, world!!'
+
+@app.route('/pdf/order/dawn', methods=['POST'])
+def order():    
+    param = json.loads(request.get_data(), encoding='utf-8')
+    dawn(param)
+    return send_file('pdf/' + param['orderNumber'] + '.pdf')
+
+@app.route('/pdf/order/fulfillment', methods=['POST'])
+def order():    
+    param = json.loads(request.get_data(), encoding='utf-8')
+    fulfillment(param)
+    return send_file('pdf/' + param['orderNumber'] + '.pdf')    
+
 @app.route('/pdf/order', methods=['POST'])
 def order():    
     param = json.loads(request.get_data(), encoding='utf-8')
