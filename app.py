@@ -15,13 +15,15 @@ def hello():
 def dawn():    
     param = json.loads(request.get_data(), encoding='utf-8')
     dawn(param)
-    return send_file('pdf/' + param['orderNumber'] + '.pdf')
+    # return send_file('pdf/' + param['orderNumber'] + '.pdf')
+    return "{'result': 'okay'}"
 
 @app.route('/pdf/order/fulfillment', methods=['POST'])
 def fulfillment():    
     param = json.loads(request.get_data(), encoding='utf-8')
     fulfillment(param)
-    return send_file('pdf/' + param['orderNumber'] + '.pdf')    
+    # return send_file('pdf/' + param['orderNumber'] + '.pdf')    
+    return "{'result': 'okay'}"
 
 @app.route('/pdf/order', methods=['POST'])
 def order():    
@@ -108,4 +110,4 @@ def dawn(param):
     pdf.output('pdf/' + fileName)
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=80)
+    app.run(host='0.0.0.0', port=8080)
